@@ -17,9 +17,12 @@ if [ ! -d "$HOME/.rvm" ]; then
     echo "RVM is Installed using $RUBY_VERSION"
     bash
     source $HOME/.rvm/scripts/rvm
+    exit
 else
     echo "RVM is installed"
 fi
+
+bash
 
 gem install rake
 gem install bundler
@@ -31,6 +34,7 @@ if [ ! -d "$HOME/.yadr" ]; then
     git clone --depth=1 https://github.com/CromonMS/dotfiles.git "$HOME/.yadr"
     cd "$HOME/.yadr"
     [ "$1" = "ask" ] && export ASK="true"
+    bash
     rake install
 else
     echo "YADR is already installed"
