@@ -9,12 +9,19 @@
 # 5. postgresql-9.6 -> Database
 # 6. 
 
-echo "Installing RVM master branch"
+# 1.
+if [ ! -d "$HOME/.rvm" ]; then
+    echo "Installing RVM master branch"
+    gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
+    \curl -sSL https://get.rvm.io | bash -s master --ruby=2.3.2
+    echo "RVM is Installed using $RUBY_VERSION"
+    source $HOME/.rvm/scripts/rvm
+else
+    echo "RVM is installed"
+fi
 
-gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-\curl -sSL https://get.rvm.io | bash -s master --ruby=2.3.2
-
-echo "RVM is Installed using $RUBY_VERSION"
+gem install rake
+gem install bundler
 
 if [ ! -d "$HOME/.yadr" ]; then
     echo "Installing YADR for the first time"
