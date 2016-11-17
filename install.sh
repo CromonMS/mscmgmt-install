@@ -1,4 +1,6 @@
-#!/bin/sh
+#!/bin/bash
+
+bash
 
 # Installs dependencies for using mscmgmt
 #
