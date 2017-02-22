@@ -38,7 +38,7 @@ task :check_ffmpeg do
   puts ''
 end
 
-desc 'check imagemagik'
+desc 'check imagemagik installation'
 task :check_imagemagik do
   puts "Checking Imagemagik Version..\n".red
   match_pattern = /(6.7)/
@@ -59,12 +59,30 @@ task :check_postgres do
   psql_min_version = 9.5
   version = `psql --version`.chomp
   # this will fall down if versions of psql get longer than 6 characters
-  if version[-6..-1].to_f >= psql_min_version
-    puts version.blue
-    puts "PASS\n".green
+  puts version.blue if version
+  case
+  when version == nil
+    puts "YOU HAVE NO POSTGRES INSTALLATION\n".red
+    puts "INSTALLING POSTGRES\n".green
+    Rake::Task['install_postgres'].invoke
+  when version[-5..-1].to_f < psql_min_version
+    puts "YOUR POSTGRES VERSION IS TOO LOW\n".red
+    puts "PLEASE UPGRADE TO A VERSION > #{psql_min_version}"
   else
-    puts "You must have a minimum of Postgres 9.5 installed\n"
+    puts "PASS\n".green
   end
+
+  # if version[-6..-1].to_f >= psql_min_version
+  #   puts version.blue
+  #   puts "PASS\n".green
+  # else
+  #   puts "POSTGRES VERSION TOO LOW\n".red
+  # end
+end
+
+desc 'install postgres'
+task :install_postgres do
+  puts 'Downloading Postgres....'
 end
 
 desc 'check install'

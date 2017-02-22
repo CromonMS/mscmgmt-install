@@ -5,7 +5,20 @@ system
 
 ---
 
-#### db_backup.rb
+### Rake tasks
+
+| Task                  | Description     |
+| :-------------        | :------------- |
+| rake check_ffmpeg     | # check ffmpeg version
+| rake check_imagemagik | # check imagemagik installation
+| rake check_postgres   | # check postgres
+| rake install          | # run install script
+| rake intro            | # intro text
+| rake list             | # list all files in directory
+
+---
+
+### db_backup.rb
 
 This script is for running backups on the database.
 
