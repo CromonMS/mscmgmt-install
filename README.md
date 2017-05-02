@@ -43,3 +43,26 @@ setup all the relevant databases anyway.
 can use it where the backup script lives.
 
 ##### !! Make sure when renaming .env to add it to the .gitignore if it not already added !!
+
+To use the script from the command line and for testing follow these steps
+We recommend to use pry, but irb is fine.
+
+```
+pry
+```
+
+```ruby
+load 'db_backup.rb'
+db = DbBackup.new
+db.backup_database
+db.deliver_email
+db.logs
+```
+Or alternatively place the following at the bottom of the file:
+```ruby
+DbBackup.new.perform!
+```
+You can now add this script to crontab, just execute
+```
+ruby /path/to/db_backup.rb
+```
