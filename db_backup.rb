@@ -52,7 +52,7 @@ class DbBackup
     upload_file
     puts Time.now.to_s.red + ' ' + 'Sending Email with Backup & Logs'.green
     deliver_email @local_path, @logs
-    puts Time.now.red + 'Finished'.green
+    puts Time.now.to_s.red + 'Finished'.green
   end
 
   def set_database
