@@ -6,5 +6,6 @@ gem 'rspec'
 gem 'aws-sdk'
 gem 'pry'
 gem 'dotenv'
+gem 'mail'
 
 gem 'colorize' # color output
