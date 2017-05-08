@@ -42,7 +42,7 @@ class DbBackup
     @bucket = ENV['S3_BUCKET']
     @timestamp = Time.now.to_s.split(' ').first
     @filename = "#{@timestamp}_#{@database}_dump.sql"
-    @local_path = "~/#{@username}/backups/#{@filename}"
+    @local_path = "home/#{@username}/backups/#{@filename}"
   end
 
   def perform!
