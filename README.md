@@ -17,7 +17,14 @@ system
 | rake list             | # list all files in directory
 
 ---
+### DEV & TEST DB Setup
 
+psql -u postgres
+CREATE ROLE mscmgmt WITH PASSWORD 'mscmgmt';
+CREATE DATABASE mscmgmt_development WITH OWNER mscmgmt;
+CREATE DATABASE mscmgmt_test WITH OWNER mscmgmt;
+
+---
 ### db_backup.rb
 
 This script is for running backups on the database.
